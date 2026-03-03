@@ -73,6 +73,32 @@ src/
 - **Botón SOS:** Acceso inmediato a líneas de atención de salud mental, integrado orgánicamente en la barra de navegación.
 - **Diseño Responsivo (Multi-dispositivo):** La interfaz se adapta automáticamente. En móviles usa una barra de navegación inferior (Bottom Nav), mientras que en tablets y PC se transforma en una barra lateral (Sidebar) y utiliza layouts de cuadrícula (CSS Grid) para aprovechar el espacio en pantalla.
 
+## 🚀 Instrucciones de Ejecución
+
+Para correr este proyecto en tu entorno local y evaluar su funcionamiento, sigue estos pasos:
+
+1. **Clonar el repositorio:**
+   ```bash
+   git clone <url-del-repositorio>
+   cd koru
+   ```
+2. **Instalar dependencias:**
+   Asegúrate de tener Node.js instalado.
+   ```bash
+   npm install
+   ```
+3. **Ejecutar el servidor de desarrollo:**
+   ```bash
+   npm run dev
+   ```
+   Esto levantará la aplicación en `http://localhost:5173` (o el puerto que indique la terminal).
+
+4. **Construir para producción (Minificación y Bundle Final):**
+   ```bash
+   npm run build
+   ```
+   Este comando utiliza el bundler (Vite) para compilar, minificar y optimizar todo el código JavaScript, CSS y SASS. El resultado final se depositará en la carpeta `dist/`, la cual contiene todo el contenido incrustado y listo para ser usado en un instalador (ej. Electron, Capacitor, etc.).
+
 ## 🚀 Buenas Prácticas Empleadas
 
 1. **Componentes UI Reutilizables y Accesibles:**
