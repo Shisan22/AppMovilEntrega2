@@ -10,6 +10,8 @@ import RelaxScreen from './screens/RelaxScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import EmergencyScreen from './screens/EmergencyScreen';
 import SettingsScreen from './screens/SettingsScreen';
+import PrivacyScreen from './screens/PrivacyScreen';
+import HelpSupportScreen from './screens/HelpSupportScreen';
 import { Home, Calendar, Wind, User, AlertCircle } from 'lucide-react';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -44,7 +46,9 @@ function MainApp() {
           <Route path="/relax" element={<RelaxScreen />} />
           <Route path="/profile" element={<ProfileScreen onNavigateSettings={() => navigate('/settings')} />} />
           <Route path="/emergency" element={<EmergencyScreen />} />
-          <Route path="/settings" element={<SettingsScreen onBack={() => navigate('/profile')} />} />
+          <Route path="/settings" element={<SettingsScreen onBack={() => navigate('/profile')} onNavigatePrivacy={() => navigate('/privacy')} onNavigateHelp={() => navigate('/help')} />} />
+          <Route path="/privacy" element={<PrivacyScreen onBack={() => navigate('/settings')} />} />
+          <Route path="/help" element={<HelpSupportScreen onBack={() => navigate('/settings')} />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
