@@ -1,18 +1,6 @@
 // main.scss
-// Archivo SASS principal para cumplir con los requerimientos del proyecto
+// Archivo SASS principal para la aplicación
 
 @import 'variables';
+@import 'mixins';
 @import 'components';
-
-// Aquí puedes añadir tus reglas SASS personalizadas.
-// Por defecto, la app usa Tailwind CSS, pero este archivo está configurado
-// para que puedas escribir SASS clásico si lo necesitas para tu curso.
-
-.sass-test-class {
-  background-color: $primary-color;
-  color: $bg-light;
-  
-  &:hover {
-    color: $secondary-color;
-  }
-}
