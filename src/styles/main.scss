@@ -1,9 +1,8 @@
 // main.scss
 // Archivo SASS principal para cumplir con los requerimientos del proyecto
 
-$primary-color: #1c1917; // stone-900
-$secondary-color: #f5f5f4; // stone-100
-$accent-color: #f43f5e; // rose-500
+@import 'variables';
+@import 'components';
 
 // Aquí puedes añadir tus reglas SASS personalizadas.
 // Por defecto, la app usa Tailwind CSS, pero este archivo está configurado
@@ -11,9 +10,9 @@ $accent-color: #f43f5e; // rose-500
 
 .sass-test-class {
   background-color: $primary-color;
-  color: $secondary-color;
+  color: $bg-light;
   
   &:hover {
-    color: $accent-color;
+    color: $secondary-color;
   }
 }
