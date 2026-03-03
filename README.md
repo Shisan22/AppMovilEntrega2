@@ -6,7 +6,8 @@ KORU es una aplicación web progresiva (PWA / SPA) orientada al bienestar y la s
 
 - **Framework:** React 18
 - **Lenguaje:** TypeScript
-- **Estilos:** Tailwind CSS (v4)
+- **Estilos:** Tailwind CSS (v4) y SASS (`sass`)
+- **Enrutamiento:** React Router (`react-router-dom`)
 - **Iconografía:** Lucide React
 - **Manejo de Fechas:** `date-fns`
 - **Utilidades de UI:** `clsx`, `tailwind-merge`
@@ -27,7 +28,10 @@ Se utiliza la **Context API** de React para manejar el estado global de la aplic
 Al ser una aplicación de demostración/frontend, la persistencia se maneja a través de una capa de abstracción sobre el `localStorage` del navegador (`src/utils/storage.ts`). Esto permite que la aplicación funcione offline y mantenga los datos entre recargas sin necesidad de un backend real.
 
 ### Enrutamiento
-Se implementó un enrutador ligero basado en estado (`currentTab` en `App.tsx`) en lugar de usar librerías pesadas como `react-router-dom`, dado que la aplicación simula una experiencia de navegación por pestañas (Bottom Navigation Bar) típica de aplicaciones móviles nativas.
+Se implementó `react-router-dom` para manejar la navegación de la aplicación como una verdadera Single Page Application (SPA). Esto permite tener URLs reales para cada sección (ej. `/calendar`, `/relax`) y facilita la protección de rutas (ej. redirigir al login si no hay sesión activa).
+
+### Estilos y Preprocesadores
+La aplicación utiliza **Tailwind CSS** como motor principal de estilos utilitarios. Adicionalmente, se ha configurado **SASS** (`sass`) y se ha incluido un archivo principal en `src/styles/main.scss`. Esto permite combinar la velocidad de Tailwind con la potencia de SASS (variables, anidamiento, mixins) para componentes o reglas globales que requieran CSS clásico.
 
 ## 📁 Estructura de Archivos
 
@@ -47,6 +51,8 @@ src/
 │   ├── ProfileScreen.tsx  # Gestión de usuario y feedback
 │   ├── SettingsScreen.tsx # Configuración (Dark mode, etc)
 │   └── EmergencyScreen.tsx# Contactos SOS
+├── styles/
+│   └── main.scss          # Archivo SASS principal
 ├── utils/
 │   ├── constants.ts       # Datos estáticos (Tips, Videos, Contactos)
 │   └── storage.ts         # Capa de abstracción de LocalStorage
