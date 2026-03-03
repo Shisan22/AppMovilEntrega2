@@ -4,7 +4,15 @@ import { useTheme } from '../context/ThemeContext';
 import { useAppContext } from '../context/AppContext';
 import { ArrowLeft, Moon, Sun, Bell, Shield, CircleHelp } from 'lucide-react';
 
-export default function SettingsScreen({ onBack }: { onBack: () => void }) {
+export default function SettingsScreen({ 
+  onBack, 
+  onNavigatePrivacy, 
+  onNavigateHelp 
+}: { 
+  onBack: () => void;
+  onNavigatePrivacy: () => void;
+  onNavigateHelp: () => void;
+}) {
   const { isDarkMode, toggleDarkMode } = useTheme();
   const { notificationsEnabled, toggleNotifications } = useAppContext();
 
@@ -67,11 +75,11 @@ export default function SettingsScreen({ onBack }: { onBack: () => void }) {
           </Card>
         </div>
 
-        {/* Other (Mock) */}
+        {/* Other */}
         <div>
           <h2 className="text-sm font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-wider mb-3 ml-2">Acerca de</h2>
           <Card className="p-2 border-none shadow-sm dark:shadow-stone-900/50 divide-y divide-stone-100 dark:divide-stone-800">
-            <button className="w-full flex items-center justify-between p-4 hover:bg-stone-50 dark:hover:bg-stone-800/50 transition-colors rounded-t-2xl">
+            <button onClick={onNavigatePrivacy} className="w-full flex items-center justify-between p-4 hover:bg-stone-50 dark:hover:bg-stone-800/50 transition-colors rounded-t-2xl">
               <div className="flex items-center gap-4 text-stone-800 dark:text-stone-200">
                 <div className="bg-stone-100 dark:bg-stone-800 p-3 rounded-full">
                   <Shield className="w-6 h-6 text-stone-600 dark:text-stone-400" />
@@ -80,7 +88,7 @@ export default function SettingsScreen({ onBack }: { onBack: () => void }) {
               </div>
               <span className="text-stone-300 dark:text-stone-600 font-bold text-xl">&gt;</span>
             </button>
-            <button className="w-full flex items-center justify-between p-4 hover:bg-stone-50 dark:hover:bg-stone-800/50 transition-colors rounded-b-2xl">
+            <button onClick={onNavigateHelp} className="w-full flex items-center justify-between p-4 hover:bg-stone-50 dark:hover:bg-stone-800/50 transition-colors rounded-b-2xl">
               <div className="flex items-center gap-4 text-stone-800 dark:text-stone-200">
                 <div className="bg-stone-100 dark:bg-stone-800 p-3 rounded-full">
                   <CircleHelp className="w-6 h-6 text-stone-600 dark:text-stone-400" />
