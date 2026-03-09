@@ -2,7 +2,7 @@
 
 KORU es una aplicación web progresiva (PWA / SPA) orientada al bienestar y la salud mental de los estudiantes universitarios. Diseñada con un enfoque "Mobile-First" y una estética "Warm Organic / Editorial", la aplicación ofrece herramientas para la gestión del tiempo, el seguimiento del estado de ánimo, la relajación guiada y el acceso rápido a contactos de emergencia.
 
-## 🛠 Stack Tecnológico
+## Stack Tecnológico
 
 - **Framework:** React 18
 - **Lenguaje:** TypeScript
@@ -14,7 +14,7 @@ KORU es una aplicación web progresiva (PWA / SPA) orientada al bienestar y la s
 - **Build Tool:** Vite
 - **Diseño Responsivo:** Adaptable a Móvil, Tablet y Desktop.
 
-## 🏗 Arquitectura del Proyecto
+##  Arquitectura del Proyecto
 
 La aplicación sigue una arquitectura de Single Page Application (SPA) puramente del lado del cliente (Client-Side Rendering). 
 
@@ -33,7 +33,7 @@ Se implementó `react-router-dom` para manejar la navegación de la aplicación 
 ### Estilos y Preprocesadores
 La aplicación utiliza **Tailwind CSS** como motor principal de estilos utilitarios. Adicionalmente, se ha configurado **SASS** (`sass`) y se ha incluido un archivo principal en `src/styles/main.scss`. Esto permite combinar la velocidad de Tailwind con la potencia de SASS (variables, anidamiento, mixins) para componentes o reglas globales que requieran CSS clásico.
 
-## 📁 Estructura de Archivos
+## Estructura de Archivos
 
 ```text
 src/
@@ -62,7 +62,7 @@ src/
 └── main.tsx               # React DOM render
 ```
 
-## ✨ Funcionalidades Principales
+## Funcionalidades Principales
 
 - **Autenticación Local:** Sistema de login/registro simulado que vincula los datos generados (eventos, encuestas) a un ID de usuario específico.
 - **Check-in Diario y Resumen Semanal:** Registro de estado de ánimo, horas de sueño y nivel de estrés. Cálculo automático de promedios semanales.
@@ -73,7 +73,7 @@ src/
 - **Botón SOS:** Acceso inmediato a líneas de atención de salud mental, integrado orgánicamente en la barra de navegación.
 - **Diseño Responsivo (Multi-dispositivo):** La interfaz se adapta automáticamente. En móviles usa una barra de navegación inferior (Bottom Nav), mientras que en tablets y PC se transforma en una barra lateral (Sidebar) y utiliza layouts de cuadrícula (CSS Grid) para aprovechar el espacio en pantalla.
 
-## 🚀 Instrucciones de Ejecución
+## Instrucciones de Ejecución
 
 Para correr este proyecto en tu entorno local y evaluar su funcionamiento, sigue estos pasos:
 
@@ -99,7 +99,7 @@ Para correr este proyecto en tu entorno local y evaluar su funcionamiento, sigue
    ```
    Este comando utiliza el bundler (Vite) para compilar, minificar y optimizar todo el código JavaScript, CSS y SASS. El resultado final se depositará en la carpeta `dist/`, la cual contiene todo el contenido incrustado y listo para ser usado en un instalador (ej. Electron, Capacitor, etc.).
 
-## 🚀 Buenas Prácticas Empleadas
+## Buenas Prácticas Empleadas
 
 1. **Componentes UI Reutilizables y Accesibles:**
    - Uso de `React.forwardRef` en componentes base (`Button`, `Input`, `Card`) para permitir la manipulación del DOM si es necesario.
