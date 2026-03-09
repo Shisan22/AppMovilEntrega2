@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 812" width="375" height="812">
+  <!-- Background -->
+  <rect width="375" height="812" fill="#fafaf9" />
+  
+  <!-- Status Bar Placeholder -->
+  <rect x="0" y="0" width="375" height="44" fill="#f5f5f4" />
+  
+  <!-- Header: Respiración Guiada -->
+  <rect x="24" y="60" width="220" height="28" rx="4" fill="#d6d3d1" />
+  <rect x="24" y="96" width="160" height="16" rx="4" fill="#e7e5e4" />
+  
+  <!-- Breathing Circle -->
+  <circle cx="187.5" cy="320" r="120" fill="none" stroke="#e7e5e4" stroke-width="2" />
+  <circle cx="187.5" cy="320" r="80" fill="#d6d3d1" opacity="0.5" />
+  <circle cx="187.5" cy="320" r="40" fill="#d6d3d1" />
+  
+  <!-- Instruction Text -->
+  <rect x="147.5" y="312" width="80" height="16" rx="4" fill="#ffffff" />
+
+  <!-- Controls Card -->
+  <rect x="24" y="520" width="327" height="160" rx="16" fill="#ffffff" stroke="#e7e5e4" stroke-width="1" />
+  
+  <!-- Duration Selector -->
+  <rect x="48" y="550" width="279" height="36" rx="18" fill="#f5f5f4" />
+  <rect x="52" y="554" width="85" height="28" rx="14" fill="#ffffff" stroke="#e7e5e4" stroke-width="1" /> <!-- Active 1m -->
+  <rect x="70" y="562" width="49" height="12" rx="4" fill="#292524" />
+  <rect x="165" y="562" width="49" height="12" rx="4" fill="#d6d3d1" />
+  <rect x="255" y="562" width="49" height="12" rx="4" fill="#d6d3d1" />
+
+  <!-- Play Button -->
+  <circle cx="187.5" cy="630" r="28" fill="#292524" />
+  <polygon points="180,620 180,640 198,630" fill="#ffffff" />
+
+  <!-- Bottom Navigation (5 items) -->
+  <rect x="0" y="730" width="375" height="82" fill="#ffffff" stroke="#e7e5e4" stroke-width="1" />
+  <!-- Home -->
+  <circle cx="37.5" cy="760" r="14" fill="#d6d3d1" />
+  <!-- Calendar -->
+  <circle cx="112.5" cy="760" r="14" fill="#d6d3d1" />
+  <!-- Relax (Active) -->
+  <circle cx="187.5" cy="760" r="14" fill="#292524" />
+  <!-- Profile -->
+  <circle cx="262.5" cy="760" r="14" fill="#d6d3d1" />
+  <!-- Emergency -->
+  <circle cx="337.5" cy="760" r="14" fill="#d6d3d1" />
+</svg>

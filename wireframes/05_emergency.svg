@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 812" width="375" height="812">
+  <!-- Background -->
+  <rect width="375" height="812" fill="#fafaf9" />
+  
+  <!-- Status Bar Placeholder -->
+  <rect x="0" y="0" width="375" height="44" fill="#f5f5f4" />
+  
+  <!-- Header: Ayuda Inmediata -->
+  <rect x="24" y="60" width="200" height="28" rx="4" fill="#d6d3d1" />
+  <rect x="24" y="96" width="280" height="16" rx="4" fill="#e7e5e4" />
+  
+  <!-- Big SOS Button -->
+  <circle cx="187.5" cy="240" r="90" fill="#fee2e2" />
+  <circle cx="187.5" cy="240" r="70" fill="#fca5a5" />
+  <circle cx="187.5" cy="240" r="50" fill="#ef4444" />
+  
+  <!-- SOS Text inside button -->
+  <rect x="162.5" y="230" width="50" height="20" rx="4" fill="#ffffff" />
+
+  <!-- Instruction Text -->
+  <rect x="62.5" y="360" width="250" height="16" rx="4" fill="#d6d3d1" />
+
+  <!-- Emergency Contacts List -->
+  <rect x="24" y="410" width="327" height="240" rx="16" fill="#ffffff" stroke="#e7e5e4" stroke-width="1" />
+  
+  <!-- Contact 1 -->
+  <circle cx="48" cy="442" r="16" fill="#fee2e2" />
+  <rect x="80" y="434" width="140" height="16" rx="4" fill="#d6d3d1" />
+  <rect x="80" y="456" width="100" height="12" rx="4" fill="#e7e5e4" />
+  <line x1="24" y1="490" x2="351" y2="490" stroke="#e7e5e4" stroke-width="1" />
+
+  <!-- Contact 2 -->
+  <circle cx="48" cy="522" r="16" fill="#fee2e2" />
+  <rect x="80" y="514" width="160" height="16" rx="4" fill="#d6d3d1" />
+  <rect x="80" y="536" width="120" height="12" rx="4" fill="#e7e5e4" />
+  <line x1="24" y1="570" x2="351" y2="570" stroke="#e7e5e4" stroke-width="1" />
+
+  <!-- Contact 3 -->
+  <circle cx="48" cy="602" r="16" fill="#fee2e2" />
+  <rect x="80" y="594" width="130" height="16" rx="4" fill="#d6d3d1" />
+  <rect x="80" y="616" width="90" height="12" rx="4" fill="#e7e5e4" />
+
+  <!-- Bottom Navigation (5 items) -->
+  <rect x="0" y="730" width="375" height="82" fill="#ffffff" stroke="#e7e5e4" stroke-width="1" />
+  <!-- Home -->
+  <circle cx="37.5" cy="760" r="14" fill="#d6d3d1" />
+  <!-- Calendar -->
+  <circle cx="112.5" cy="760" r="14" fill="#d6d3d1" />
+  <!-- Relax -->
+  <circle cx="187.5" cy="760" r="14" fill="#d6d3d1" />
+  <!-- Profile -->
+  <circle cx="262.5" cy="760" r="14" fill="#d6d3d1" />
+  <!-- Emergency (Active) -->
+  <circle cx="337.5" cy="760" r="14" fill="#292524" />
+</svg>

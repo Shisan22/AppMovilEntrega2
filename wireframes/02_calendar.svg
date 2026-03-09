@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 812" width="375" height="812">
+  <!-- Background -->
+  <rect width="375" height="812" fill="#fafaf9" />
+  
+  <!-- Status Bar Placeholder -->
+  <rect x="0" y="0" width="375" height="44" fill="#f5f5f4" />
+  
+  <!-- Header: Tu Historial -->
+  <rect x="24" y="60" width="160" height="28" rx="4" fill="#d6d3d1" />
+  
+  <!-- Calendar Card -->
+  <rect x="24" y="110" width="327" height="340" rx="16" fill="#ffffff" stroke="#e7e5e4" stroke-width="1" />
+  
+  <!-- Month/Year Header -->
+  <rect x="137" y="130" width="100" height="20" rx="4" fill="#d6d3d1" />
+  <circle cx="44" cy="140" r="10" fill="#e7e5e4" /> <!-- Prev -->
+  <circle cx="330" cy="140" r="10" fill="#e7e5e4" /> <!-- Next -->
+  
+  <!-- Days of week -->
+  <g fill="#d6d3d1">
+    <rect x="36" y="170" width="24" height="12" rx="2" />
+    <rect x="80" y="170" width="24" height="12" rx="2" />
+    <rect x="124" y="170" width="24" height="12" rx="2" />
+    <rect x="168" y="170" width="24" height="12" rx="2" />
+    <rect x="212" y="170" width="24" height="12" rx="2" />
+    <rect x="256" y="170" width="24" height="12" rx="2" />
+    <rect x="300" y="170" width="24" height="12" rx="2" />
+  </g>
+  
+  <!-- Calendar Grid (Dots) -->
+  <g fill="#e7e5e4">
+    <!-- Row 1 -->
+    <circle cx="48" cy="210" r="14" />
+    <circle cx="92" cy="210" r="14" />
+    <circle cx="136" cy="210" r="14" />
+    <circle cx="180" cy="210" r="14" />
+    <circle cx="224" cy="210" r="14" />
+    <circle cx="268" cy="210" r="14" />
+    <circle cx="312" cy="210" r="14" />
+    <!-- Row 2 -->
+    <circle cx="48" cy="254" r="14" />
+    <circle cx="92" cy="254" r="14" />
+    <circle cx="136" cy="254" r="14" />
+    <circle cx="180" cy="254" r="14" />
+    <circle cx="224" cy="254" r="14" />
+    <circle cx="268" cy="254" r="14" />
+    <circle cx="312" cy="254" r="14" />
+    <!-- Row 3 -->
+    <circle cx="48" cy="298" r="14" />
+    <circle cx="92" cy="298" r="14" />
+    <circle cx="136" cy="298" r="14" />
+    <circle cx="180" cy="298" r="14" fill="#292524" /> <!-- Selected Day -->
+    <circle cx="224" cy="298" r="14" />
+    <circle cx="268" cy="298" r="14" />
+    <circle cx="312" cy="298" r="14" />
+    <!-- Row 4 -->
+    <circle cx="48" cy="342" r="14" />
+    <circle cx="92" cy="342" r="14" />
+    <circle cx="136" cy="342" r="14" />
+    <circle cx="180" cy="342" r="14" />
+    <circle cx="224" cy="342" r="14" />
+    <circle cx="268" cy="342" r="14" />
+    <circle cx="312" cy="342" r="14" />
+    <!-- Row 5 -->
+    <circle cx="48" cy="386" r="14" />
+    <circle cx="92" cy="386" r="14" />
+    <circle cx="136" cy="386" r="14" />
+  </g>
+
+  <!-- Selected Day Details -->
+  <rect x="24" y="480" width="200" height="20" rx="4" fill="#d6d3d1" />
+  
+  <rect x="24" y="520" width="327" height="88" rx="12" fill="#ffffff" stroke="#e7e5e4" stroke-width="1" />
+  <circle cx="52" cy="564" r="16" fill="#e7e5e4" />
+  <rect x="84" y="540" width="100" height="16" rx="4" fill="#d6d3d1" />
+  <rect x="84" y="564" width="200" height="12" rx="4" fill="#e7e5e4" />
+  <rect x="84" y="584" width="150" height="12" rx="4" fill="#e7e5e4" />
+
+  <!-- Bottom Navigation (5 items) -->
+  <rect x="0" y="730" width="375" height="82" fill="#ffffff" stroke="#e7e5e4" stroke-width="1" />
+  <!-- Home -->
+  <circle cx="37.5" cy="760" r="14" fill="#d6d3d1" />
+  <!-- Calendar (Active) -->
+  <circle cx="112.5" cy="760" r="14" fill="#292524" />
+  <!-- Relax -->
+  <circle cx="187.5" cy="760" r="14" fill="#d6d3d1" />
+  <!-- Profile -->
+  <circle cx="262.5" cy="760" r="14" fill="#d6d3d1" />
+  <!-- Emergency -->
+  <circle cx="337.5" cy="760" r="14" fill="#d6d3d1" />
+</svg>
