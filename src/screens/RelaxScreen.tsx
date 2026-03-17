@@ -15,21 +15,6 @@ export default function RelaxScreen() {
     ? RELAXATION_SOUNDS 
     : RELAXATION_SOUNDS.filter(s => s.type === filter);
 
-  // Handle play/pause when active sound changes
-  useEffect(() => {
-    if (audioRef.current) {
-      if (activeSound) {
-        audioRef.current.play().then(() => setIsPlaying(true)).catch(e => {
-          console.error("Error playing audio:", e);
-          setIsPlaying(false);
-        });
-      } else {
-        audioRef.current.pause();
-        setIsPlaying(false);
-      }
-    }
-  }, [activeSound]);
-
   const togglePlayPause = () => {
     if (audioRef.current) {
       if (isPlaying) {
@@ -41,10 +26,31 @@ export default function RelaxScreen() {
     }
   };
 
+  const handleSoundClick = (soundId: string) => {
+    if (activeSound === soundId) {
+      togglePlayPause();
+      return;
+    }
+
+    const sound = RELAXATION_SOUNDS.find(s => s.id === soundId);
+    if (sound && audioRef.current) {
+      audioRef.current.src = sound.url;
+      audioRef.current.play().then(() => {
+        setIsPlaying(true);
+        setActiveSound(soundId);
+      }).catch(e => {
+        console.error("Error playing audio:", e);
+        setIsPlaying(false);
+        setActiveSound(soundId);
+      });
+    }
+  };
+
   const currentSoundObj = RELAXATION_SOUNDS.find(s => s.id === activeSound);
 
   return (
     <div className="pb-24 md:pb-12 pt-20 px-6 max-w-md md:max-w-6xl mx-auto">
+      <audio ref={audioRef} loop className="hidden" />
       <header className="mb-10">
         <h1 className="text-4xl font-serif font-bold text-stone-900 dark:text-stone-100 flex items-center gap-3 mb-3">
           <Wind className="w-8 h-8 text-emerald-600" />
@@ -90,13 +96,6 @@ export default function RelaxScreen() {
               </h3>
               <p className="text-stone-400 font-medium mb-8">Reproduciendo sonido offline</p>
 
-              <audio 
-                ref={audioRef} 
-                src={currentSoundObj.url} 
-                loop 
-                className="hidden" 
-              />
-
               <div className="flex items-center gap-6 justify-center">
                 <button 
                   onClick={togglePlayPause}
@@ -113,7 +112,13 @@ export default function RelaxScreen() {
           </div>
           <div className="p-4 bg-stone-950 flex justify-end">
             <button 
-              onClick={() => setActiveSound(null)}
+              onClick={() => {
+                if (audioRef.current) {
+                  audioRef.current.pause();
+                }
+                setIsPlaying(false);
+                setActiveSound(null);
+              }}
               className="text-stone-400 hover:text-white text-sm font-medium bg-stone-800 px-5 py-2 rounded-full transition-colors"
             >
               Cerrar Reproductor
@@ -130,7 +135,7 @@ export default function RelaxScreen() {
             className={`overflow-hidden transition-all duration-300 cursor-pointer hover:shadow-xl border-none
               ${activeSound === sound.id ? 'ring-4 ring-emerald-500/20 scale-[1.02]' : 'shadow-sm dark:shadow-stone-900/50'}
             `}
-            onClick={() => setActiveSound(sound.id)}
+            onClick={() => handleSoundClick(sound.id)}
           >
             <div className="flex p-4 gap-5 items-center">
               <div className="w-24 h-24 bg-stone-100 dark:bg-stone-800 rounded-2xl flex items-center justify-center flex-shrink-0 relative overflow-hidden group">

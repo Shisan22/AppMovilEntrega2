@@ -49,42 +49,42 @@ export const RELAXATION_SOUNDS = [
   {
     id: 's1',
     title: 'Lluvia Suave y Bosque',
-    url: '/sounds/rain.wav',
+    url: './sounds/rain.wav',
     duration: '10 min',
     type: 'Naturaleza'
   },
   {
     id: 's2',
     title: 'Olas del Mar Relajantes',
-    url: '/sounds/ocean.wav',
+    url: './sounds/ocean.wav',
     duration: '15 min',
     type: 'Océano'
   },
   {
     id: 's3',
     title: 'Ambiente de Cafetería',
-    url: '/sounds/white-noise.wav',
+    url: './sounds/white-noise.wav',
     duration: 'Infinito',
     type: 'Música'
   },
   {
     id: 's4',
     title: 'Cuenco Tibetano (Meditación)',
-    url: '/sounds/bowl.wav',
+    url: './sounds/bowl.wav',
     duration: '5 min',
     type: 'Meditación'
   },
   {
     id: 's5',
     title: 'Aves Cantando',
-    url: '/sounds/birds.wav',
+    url: './sounds/birds.wav',
     duration: '10 min',
     type: 'Naturaleza'
   },
   {
     id: 's6',
     title: 'Música de Ascensor',
-    url: '/sounds/elevator.wav',
+    url: './sounds/elevator.wav',
     duration: 'Infinito',
     type: 'Música'
   }
