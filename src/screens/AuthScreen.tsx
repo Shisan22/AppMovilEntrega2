@@ -8,6 +8,7 @@ export default function AuthScreen() {
   const { login, register } = useAuth();
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [error, setError] = useState('');
 
@@ -20,15 +21,20 @@ export default function AuthScreen() {
       return;
     }
 
+    if (!password) {
+      setError('Por favor ingresa tu contraseña.');
+      return;
+    }
+
     if (isLogin) {
-      const success = login(email);
-      if (!success) setError('Usuario no encontrado. Por favor regístrate.');
+      const success = login(email, password);
+      if (!success) setError('Credenciales incorrectas o usuario no encontrado.');
     } else {
       if (!name) {
         setError('Por favor ingresa tu nombre.');
         return;
       }
-      const success = register(email, name);
+      const success = register(email, name, password);
       if (!success) setError('El correo ya está registrado.');
     }
   };
@@ -71,6 +77,15 @@ export default function AuthScreen() {
                 placeholder="Correo institucional"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+
+            <div>
+              <Input
+                type="password"
+                placeholder="Contraseña"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 

@@ -4,8 +4,8 @@ import { storage } from '../utils/storage';
 
 interface AuthContextType {
   user: User | null;
-  login: (email: string) => boolean;
-  register: (email: string, name: string) => boolean;
+  login: (email: string, password?: string) => boolean;
+  register: (email: string, name: string, password?: string) => boolean;
   logout: () => void;
   updateProfile: (updates: Partial<User>) => void;
 }
@@ -24,10 +24,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, []);
 
-  const login = (email: string) => {
+  const login = (email: string, password?: string) => {
     const users = storage.getUsers();
     const found = users.find(u => u.email === email);
     if (found) {
+      // If the user has a password set, verify it.
+      // If they don't have a password set (legacy account), let them in so they can set one.
+      if (found.password && found.password !== password) {
+        return false;
+      }
       setUser(found);
       localStorage.setItem('zen_campus_current_user', found.id);
       return true;
@@ -35,7 +40,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return false;
   };
 
-  const register = (email: string, name: string) => {
+  const register = (email: string, name: string, password?: string) => {
     const users = storage.getUsers();
     if (users.find(u => u.email === email)) return false;
 
@@ -43,6 +48,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       id: Date.now().toString(),
       email,
       name,
+      password,
     };
     storage.saveUser(newUser);
     setUser(newUser);

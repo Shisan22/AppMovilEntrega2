@@ -14,17 +14,48 @@ export default function ProfileScreen({ onNavigateSettings }: { onNavigateSettin
   const [semester, setSemester] = useState(user?.semester?.toString() || '');
   const [avatar, setAvatar] = useState(user?.avatar || '');
 
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+
   const [feedback, setFeedback] = useState('');
   const [feedbackSent, setFeedbackSent] = useState(false);
 
   const handleSaveProfile = () => {
-    updateProfile({
-      name,
-      career,
-      semester: semester ? parseInt(semester) : undefined,
-      avatar
-    });
-    setIsEditing(false);
+    try {
+      if (newPassword || currentPassword) {
+        if (user?.password && currentPassword !== user.password) {
+          setPasswordError('La contraseña actual es incorrecta.');
+          return;
+        }
+        if (newPassword !== confirmPassword) {
+          setPasswordError('Las contraseñas nuevas no coinciden.');
+          return;
+        }
+        if (newPassword.length < 6) {
+          setPasswordError('La nueva contraseña debe tener al menos 6 caracteres.');
+          return;
+        }
+      }
+
+      updateProfile({
+        name,
+        career,
+        semester: semester ? parseInt(semester) : undefined,
+        avatar,
+        ...(newPassword ? { password: newPassword } : {})
+      });
+      
+      setCurrentPassword('');
+      setNewPassword('');
+      setConfirmPassword('');
+      setPasswordError('');
+      setIsEditing(false);
+    } catch (error) {
+      console.error("Error saving profile:", error);
+      alert("Hubo un error al guardar el perfil. Es posible que la imagen sea demasiado grande.");
+    }
   };
 
   const handleSendFeedback = (e: React.FormEvent) => {
@@ -58,7 +89,13 @@ export default function ProfileScreen({ onNavigateSettings }: { onNavigateSettin
             </button>
           ) : (
             <div className="flex gap-3">
-              <button onClick={() => setIsEditing(false)} className="text-stone-400 dark:text-stone-500 hover:text-rose-600 dark:hover:text-rose-500 transition-colors bg-stone-100 dark:bg-stone-800 p-3 rounded-full">
+              <button onClick={() => {
+                setIsEditing(false);
+                setCurrentPassword('');
+                setNewPassword('');
+                setConfirmPassword('');
+                setPasswordError('');
+              }} className="text-stone-400 dark:text-stone-500 hover:text-rose-600 dark:hover:text-rose-500 transition-colors bg-stone-100 dark:bg-stone-800 p-3 rounded-full">
                 <X className="w-5 h-5" />
               </button>
               <button onClick={handleSaveProfile} className="text-stone-100 dark:text-stone-900 hover:text-white dark:hover:text-stone-800 transition-colors bg-stone-900 dark:bg-stone-100 p-3 rounded-full shadow-md">
@@ -80,8 +117,54 @@ export default function ProfileScreen({ onNavigateSettings }: { onNavigateSettin
           {isEditing ? (
             <div className="w-full space-y-5 mt-4 text-left animate-in fade-in duration-300">
               <div>
-                <label className="text-sm font-semibold text-stone-500 ml-2 mb-2 block">URL de Imagen</label>
-                <Input value={avatar} onChange={e => setAvatar(e.target.value)} placeholder="https://..." />
+                <label className="text-sm font-semibold text-stone-500 ml-2 mb-2 block">Foto de Perfil</label>
+                <input 
+                  type="file" 
+                  accept="image/*"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) {
+                      const reader = new FileReader();
+                      reader.onloadend = () => {
+                        const img = new Image();
+                        img.onload = () => {
+                          const canvas = document.createElement('canvas');
+                          const MAX_SIZE = 400;
+                          let width = img.width;
+                          let height = img.height;
+
+                          if (width > height) {
+                            if (width > MAX_SIZE) {
+                              height *= MAX_SIZE / width;
+                              width = MAX_SIZE;
+                            }
+                          } else {
+                            if (height > MAX_SIZE) {
+                              width *= MAX_SIZE / height;
+                              height = MAX_SIZE;
+                            }
+                          }
+                          
+                          canvas.width = width;
+                          canvas.height = height;
+                          const ctx = canvas.getContext('2d');
+                          if (ctx) {
+                            ctx.fillStyle = '#FFFFFF';
+                            ctx.fillRect(0, 0, width, height);
+                            ctx.drawImage(img, 0, 0, width, height);
+                          }
+                          
+                          // Compress to JPEG with 0.7 quality
+                          const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
+                          setAvatar(dataUrl);
+                        };
+                        img.src = reader.result as string;
+                      };
+                      reader.readAsDataURL(file);
+                    }
+                  }}
+                  className="flex w-full rounded-2xl border-none bg-stone-200/50 dark:bg-stone-800/50 px-5 py-3 text-sm text-stone-900 dark:text-stone-100 focus:outline-none focus:ring-2 focus:ring-stone-900 dark:focus:ring-stone-100 transition-all file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-stone-900 file:text-white hover:file:bg-stone-800 dark:file:bg-stone-100 dark:file:text-stone-900 dark:hover:file:bg-stone-200 cursor-pointer"
+                />
               </div>
               <div>
                 <label className="text-sm font-semibold text-stone-500 ml-2 mb-2 block">Nombre</label>
@@ -94,6 +177,27 @@ export default function ProfileScreen({ onNavigateSettings }: { onNavigateSettin
               <div>
                 <label className="text-sm font-semibold text-stone-500 ml-2 mb-2 block">Semestre</label>
                 <Input type="number" value={semester} onChange={e => setSemester(e.target.value)} placeholder="Ej. 5" />
+              </div>
+              
+              <div className="pt-4 border-t border-stone-200 dark:border-stone-800">
+                <h3 className="text-lg font-serif font-bold text-stone-900 dark:text-stone-100 mb-4">Cambiar Contraseña</h3>
+                <div className="space-y-4">
+                  {user?.password && (
+                    <div>
+                      <label className="text-sm font-semibold text-stone-500 ml-2 mb-2 block">Contraseña Actual</label>
+                      <Input type="password" value={currentPassword} onChange={e => setCurrentPassword(e.target.value)} placeholder="••••••••" />
+                    </div>
+                  )}
+                  <div>
+                    <label className="text-sm font-semibold text-stone-500 ml-2 mb-2 block">Nueva Contraseña</label>
+                    <Input type="password" value={newPassword} onChange={e => setNewPassword(e.target.value)} placeholder="••••••••" />
+                  </div>
+                  <div>
+                    <label className="text-sm font-semibold text-stone-500 ml-2 mb-2 block">Confirmar Nueva Contraseña</label>
+                    <Input type="password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} placeholder="••••••••" />
+                  </div>
+                  {passwordError && <p className="text-rose-500 text-sm px-2">{passwordError}</p>}
+                </div>
               </div>
             </div>
           ) : (

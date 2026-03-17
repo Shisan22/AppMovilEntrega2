@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Koru</string>
+    <string name="title_activity_main">Koru</string>
+    <string name="package_name">com.Koru.app</string>
+    <string name="custom_url_scheme">com.Koru.app</string>
+</resources>

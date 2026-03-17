@@ -45,33 +45,47 @@ export const ACTIVE_BREAK_TIPS = [
   "Haz rotaciones de hombros hacia atrás y hacia adelante 10 veces."
 ];
 
-export const RELAXATION_VIDEOS = [
+export const RELAXATION_SOUNDS = [
   {
-    id: 'v1',
-    title: 'Sonidos del Bosque y Lluvia',
-    url: 'https://www.youtube.com/embed/q76bMs-NwRk?autoplay=0&controls=1',
+    id: 's1',
+    title: 'Lluvia Suave y Bosque',
+    url: '/sounds/rain.wav',
     duration: '10 min',
     type: 'Naturaleza'
   },
   {
-    id: 'v2',
+    id: 's2',
     title: 'Olas del Mar Relajantes',
-    url: 'https://www.youtube.com/embed/bn9F19Hi1Lk?autoplay=0&controls=1',
+    url: '/sounds/ocean.wav',
     duration: '15 min',
     type: 'Océano'
   },
   {
-    id: 'v3',
-    title: 'Música Lo-Fi para Estudiar',
-    url: 'https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=0&controls=1',
-    duration: 'En vivo',
+    id: 's3',
+    title: 'Ambiente de Cafetería',
+    url: '/sounds/white-noise.wav',
+    duration: 'Infinito',
     type: 'Música'
   },
   {
-    id: 'v4',
-    title: 'Meditación Guiada Corta',
-    url: 'https://www.youtube.com/embed/inpok4MKVLM?autoplay=0&controls=1',
+    id: 's4',
+    title: 'Cuenco Tibetano (Meditación)',
+    url: '/sounds/bowl.wav',
     duration: '5 min',
     type: 'Meditación'
+  },
+  {
+    id: 's5',
+    title: 'Aves Cantando',
+    url: '/sounds/birds.wav',
+    duration: '10 min',
+    type: 'Naturaleza'
+  },
+  {
+    id: 's6',
+    title: 'Música de Ascensor',
+    url: '/sounds/elevator.wav',
+    duration: 'Infinito',
+    type: 'Música'
   }
 ];
