@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { AppProvider } from './context/AppContext';
 import { ThemeProvider } from './context/ThemeContext';
@@ -123,9 +123,9 @@ export default function App() {
     <ThemeProvider>
       <AuthProvider>
         <AppProvider>
-          <BrowserRouter>
+          <HashRouter>
             <AppRoutes />
-          </BrowserRouter>
+          </HashRouter>
         </AppProvider>
       </AuthProvider>
     </ThemeProvider>

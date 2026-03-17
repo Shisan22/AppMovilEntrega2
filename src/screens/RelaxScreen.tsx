@@ -35,6 +35,7 @@ export default function RelaxScreen() {
     const sound = RELAXATION_SOUNDS.find(s => s.id === soundId);
     if (sound && audioRef.current) {
       audioRef.current.src = sound.url;
+      audioRef.current.load();
       audioRef.current.play().then(() => {
         setIsPlaying(true);
         setActiveSound(soundId);
