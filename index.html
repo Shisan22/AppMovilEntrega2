@@ -66,6 +66,25 @@
     </style>
 </head>
 <body class="font-sans text-stone-800 bg-stone-50 antialiased selection:bg-emerald-200 selection:text-emerald-900 overflow-x-hidden">
+    <!-- QR MODAL -->
+    <div id="qrModal" class="fixed inset-0 bg-black/70 flex items-center justify-center hidden z-50">
+        <div class="bg-white p-6 rounded-2xl shadow-2xl text-center max-w-sm w-full relative">
+
+            <!-- Cerrar -->
+            <button onclick="closeQR()" class="absolute top-3 right-3 text-gray-500 hover:text-black text-xl">
+                ✖
+            </button>
+
+            <h2 class="text-xl font-bold mb-4">Escanea el QR</h2>
+
+            <!-- SOLO NECESITAS ESTA IMAGEN -->
+            <img src="img/qr.png" alt="QR" class="w-full rounded-lg">
+
+            <p class="mt-4 text-sm text-gray-500">
+                Abre la app desde tu celular
+            </p>
+        </div>
+    </div>
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
@@ -85,9 +104,9 @@
                 </div>
                 <div class="flex items-center">
                     <!-- Enlace a la app de React compilada. Ajusta la ruta según tu despliegue en GitHub Pages -->
-                    <a href="../" class="bg-stone-900 hover:bg-emerald-600 text-white px-6 py-2.5 rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-emerald-500/25">
+                    <button onclick="openQR()" class="bg-stone-900 hover:bg-emerald-600 text-white px-6 py-2.5 rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-emerald-500/25">
                         Abrir App
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -274,10 +293,9 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <h2 class="text-4xl md:text-6xl font-serif font-bold mb-8">Empieza tu viaje hacia el bienestar hoy mismo</h2>
             <p class="text-xl text-emerald-100 mb-10 max-w-2xl mx-auto">Koru es completamente gratis, funciona sin conexión y respeta tu privacidad. Tus datos se guardan solo en tu dispositivo.</p>
-            <a href="../" class="inline-flex items-center gap-2 bg-white text-emerald-700 hover:bg-stone-100 px-10 py-5 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl">
+            <button onclick="openQR()" class="inline-flex items-center gap-2 bg-white text-emerald-700 hover:bg-stone-100 px-10 py-5 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl">
                 Abrir Koru Web App
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </a>
+            </button>
             <p class="mt-6 text-emerald-200 text-sm">No requiere instalación. Funciona directamente en tu navegador.</p>
         </div>
     </section>
@@ -318,6 +336,15 @@
                 nav.classList.replace('glass-nav', 'bg-transparent');
             }
         });
+    </script>
+    <script>
+        function openQR() { 
+            document.getElementById('qrModal').classList.remove('hidden');
+        }
+
+        function closeQR() {
+            document.getElementById('qrModal').classList.add('hidden');
+        }
     </script>
 </body>
 </html>
