@@ -1,10 +1,3 @@
-import rainSound from '../assets/sounds/rain.wav';
-import oceanSound from '../assets/sounds/ocean.wav';
-import whiteNoiseSound from '../assets/sounds/white-noise.wav';
-import bowlSound from '../assets/sounds/bowl.wav';
-import birdsSound from '../assets/sounds/birds.wav';
-import elevatorSound from '../assets/sounds/elevator.wav';
-
 export const MOTIVATIONAL_QUOTES = [
   "El éxito es la suma de pequeños esfuerzos repetidos día tras día.",
   "No te compares con los demás, compárate con la persona que eras ayer.",
@@ -56,42 +49,42 @@ export const RELAXATION_SOUNDS = [
   {
     id: 's1',
     title: 'Lluvia Suave y Bosque',
-    url: rainSound,
+    url: 'rain',
     duration: '10 min',
     type: 'Naturaleza'
   },
   {
     id: 's2',
     title: 'Olas del Mar Relajantes',
-    url: oceanSound,
+    url: 'ocean',
     duration: '15 min',
     type: 'Océano'
   },
   {
     id: 's3',
     title: 'Ambiente de Cafetería',
-    url: whiteNoiseSound,
+    url: 'white-noise',
     duration: 'Infinito',
     type: 'Música'
   },
   {
     id: 's4',
     title: 'Cuenco Tibetano (Meditación)',
-    url: bowlSound,
+    url: 'bowl',
     duration: '5 min',
     type: 'Meditación'
   },
   {
     id: 's5',
     title: 'Aves Cantando',
-    url: birdsSound,
+    url: 'birds',
     duration: '10 min',
     type: 'Naturaleza'
   },
   {
     id: 's6',
     title: 'Música de Ascensor',
-    url: elevatorSound,
+    url: 'elevator',
     duration: 'Infinito',
     type: 'Música'
   }

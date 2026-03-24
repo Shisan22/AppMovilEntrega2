@@ -1,13 +1,13 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, Button } from '../components/ui';
 import { RELAXATION_SOUNDS } from '../utils/constants';
 import { Headphones, PlayCircle, PauseCircle, Wind, Music, Droplets, Bird, Building } from 'lucide-react';
+import { audioSynth } from '../utils/audioSynth';
 
 export default function RelaxScreen() {
   const [activeSound, setActiveSound] = useState<string | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [filter, setFilter] = useState<string>('Todos');
-  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const types = ['Todos', ...Array.from(new Set(RELAXATION_SOUNDS.map(s => s.type)))];
   
@@ -16,12 +16,13 @@ export default function RelaxScreen() {
     : RELAXATION_SOUNDS.filter(s => s.type === filter);
 
   const togglePlayPause = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-        setIsPlaying(false);
-      } else {
-        audioRef.current.play().then(() => setIsPlaying(true)).catch(console.error);
+    if (isPlaying) {
+      audioSynth.stop();
+      setIsPlaying(false);
+    } else if (activeSound) {
+      const sound = RELAXATION_SOUNDS.find(s => s.id === activeSound);
+      if (sound) {
+        audioSynth.play(sound.url).then(() => setIsPlaying(true)).catch(console.error);
       }
     }
   };
@@ -33,10 +34,8 @@ export default function RelaxScreen() {
     }
 
     const sound = RELAXATION_SOUNDS.find(s => s.id === soundId);
-    if (sound && audioRef.current) {
-      audioRef.current.src = sound.url;
-      audioRef.current.load();
-      audioRef.current.play().then(() => {
+    if (sound) {
+      audioSynth.play(sound.url).then(() => {
         setIsPlaying(true);
         setActiveSound(soundId);
       }).catch(e => {
@@ -47,11 +46,17 @@ export default function RelaxScreen() {
     }
   };
 
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      audioSynth.stop();
+    };
+  }, []);
+
   const currentSoundObj = RELAXATION_SOUNDS.find(s => s.id === activeSound);
 
   return (
     <div className="pb-24 md:pb-12 pt-20 px-6 max-w-md md:max-w-6xl mx-auto">
-      <audio ref={audioRef} loop className="hidden" />
       <header className="mb-10">
         <h1 className="text-4xl font-serif font-bold text-stone-900 dark:text-stone-100 flex items-center gap-3 mb-3">
           <Wind className="w-8 h-8 text-emerald-600" />
@@ -114,9 +119,7 @@ export default function RelaxScreen() {
           <div className="p-4 bg-stone-950 flex justify-end">
             <button 
               onClick={() => {
-                if (audioRef.current) {
-                  audioRef.current.pause();
-                }
+                audioSynth.stop();
                 setIsPlaying(false);
                 setActiveSound(null);
               }}
